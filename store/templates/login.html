@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-6 mt-5 bg-light border rounded">
+      <form action="/login" method="POST" class="p-3">
+        {% csrf_token %}
+
+
+
+        <div class="mb-3">
+          <label>Username</label>
+          {{ form.name }}
+         
+        </div>
+        <div class="mb-3">
+          <label>Password</label>
+          {{ form.password }}
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

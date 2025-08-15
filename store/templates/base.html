@@ -1,0 +1,89 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script type="text/javascript"
+    src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=HUPmb3kH97WTmOnd6sPH6CIffVBPFPntiGt84Yp7mtDsIGU-S0U7Kp2NDbPoIm2iFOxXcNWsZNxGTJBAk11VcQPLg04kPHoMqPoc0Dgh5Yl75-DtrN6ql7TQ4F5bmTlcLOKmZA5uHpqC2TJA852Xk2AW6ka-hjHzSIomoDHzjju7mKhsv5d4nuvahR8csu5eodRAMRlmKKChFmnYBDw7aNz5nFQqnrW8ZU7TEiaUCokEowaxJ6Q26lfEHHRlS9LLG1QSTS9HpjXZc9yLEirVALK9kAn8eRS8r_6-nhOkyrrSqEpYSsLw4erck6U7Z89XcZXFfL3f0n3lQX27yL47L2e-CVi1ZD7OSGqqH1szEqwJ3Wxgg_S2Srlmhhc4LNlR4W6v7bVPKNcLDQjSK2lYCytp3g3HQjej1aH0bLtTtPaP4syN0a_cukw3eCnzeAO-dBxXo38lOrqUxw4zBIh24VEF0tAH2ACBaXVC7UW8iqJpoPtzhpwxcqFRa01rOeseeRPL0BVGYqbrQq0NCl-ZCAjAD7b2Or2TUA02MpzRiHQkTc6fXYBiVVa55cb6VxVsjIHn4-RS0tnsTCpYjjNkAo1YVaSFTKsE36x3UYwC1dkTB0vcuRAeTAP1b0bGh2U9Xd8hvb3N9YQVbdb9pWdE3UwsGLp1OH6jM2VgWY_nG5C96TBJPb04IPM4ayTd-59DROKyaboYeg5ovL-KeKf0rt_mkDJ4LDiIjvESt4Xt_vfUH_YZCmD2EDLoXSMVPFBkuTB0w_uEe1D3F6u_cM-g-A"
+    charset="UTF-8"></script>
+  <link rel="stylesheet" crossorigin="anonymous"
+    href="https://me.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9hdHQtYy51ZGVteWNkbi5jb20vMjAyMi0xMi0xMV8xMS01NC0wNy1lZTM1ODc4Njg1YmQ2ZGFmZmI0ZjgzODFhZGQwOGU5My9vcmlnaW5hbC5odG1sP3Jlc3BvbnNlLWNvbnRlbnQtZGlzcG9zaXRpb249YXR0YWNobWVudCUzYiUyMGZpbGVuYW1lJTNkYmFzZS5odG1sJkV4cGlyZXM9MTc1NTAxNDM5OCZTaWduYXR1cmU9UG15NmdLd2FhdlYtY3prczVRSzdKV3R3WEgwaVoxdDVJWUctdDZIMFVaLXlGSnA2U0dTdm05OTl4WW1TT0ljbXMwUEFZdEdiLWJDV3RqZn40OFoyazB3N0V1c3g5R2ctc2xaemRwfkZJazh1MDF4UUlpflhiUH5CNUQzVG40LTNHYTRpNVNCbVU4cX5uZlJCOGlRcy1QM2FlbVg3TWlpZ09wQ0RZMGpWY2VsVGFpcU5tWjBJMG9yLXVPYVdvUmtiSkpXbH5kQkRUc1YweTdLSmxXaEY5cHktVzdTRHI2Q2ZMYUdYS3IwaE4zUlFsb0JOMmduT1c4ME5XckliMVJXVThVQldtQkE4aDN0TzFJSmptSzF3MGFKUml6S0xIb2xYeGU3QTc5WTd1YkxKeHNvWkNxRTRKNUV4ZXBLfnV3WTlkNGhWaW51VFBZNEo1WH5BVzMyU0ZnX18mS2V5LVBhaXItSWQ9SzNNRzE0OEs5UklSRjQ" />
+
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+  <!-- navbar start -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'index' %}">Deal</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto text-center">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto text-center">
+        {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+        <li class="nav-item"><span class="nav-link">Hello, ADMIN</span></li>
+        {% elif user.is_staff %}
+        <li class="nav-item"><span class="nav-link">Hello, STAFF</span></li>
+        {% else %}
+        <li class="nav-item"><span class="nav-link">Hello, {{ user.username }}</span></li>
+        {% endif %}
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'cart' %}">Cart</a>
+        </li>
+
+        <li class="nav-item">
+          <form action="{% url 'logout_use' %}" method="post" class="nav-link p-2 m-0">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-link nav-link p-0">Logout</button>
+          </form>
+        </li>
+        {% else %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'login_use' %}">Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+
+  {% block content %}
+
+  {% endblock %}
+
+  <!-- navbar end -->
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

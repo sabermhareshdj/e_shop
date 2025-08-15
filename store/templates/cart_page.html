@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+
+        <div class="col-sm-6">
+            {% if items %}
+            {% for item in items %}
+            <div class="product-cart card mb-3">
+                <div class="row">
+                    <div class="col-sm-3 text-center"><a> <img class="product-cart-image"
+                                src="{{item.product_image.url}}" alt="product"></a></div>
+                    <div class="col-sm-3 text-center">
+                        <p class="product-cart-name">{{item.slug}}</p>
+                    </div>
+                    <div class="col-sm-3 text-center">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-4"><a href="{% url 'remove_from_cart' product=item.slug %}"><button class="btn-danger border rounded mt-3">-</button></a>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="product-cart-quantity">{{item.product_quantity}}</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <a href="{% url 'add_cart' product=item.slug %}">
+                                            <button type="button" class="btn btn-success border rounded mt-3">+</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 text-center">
+                        <p class="product-cart-value">$ {{item.total_cart_value}}</p>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="col-sm-6">
+            <div class="cart-desc card">
+                <div class="col text-center">
+                    <h2>Your shopping cart</h2>
+                </div>
+                <hr>
+                <div class="row mt-3">
+                    <div class="col text-center">
+                        <h3>Total value</h3>
+                    </div>
+                    <div class="col text-center">
+                        <h3>$ {{ total }}</h3>
+                    </div>
+                </div>
+                <div class="row mt-3 mb-3">
+                    <div class="col text-center">
+                        <a><button class="cart-desc-btn btn btn-secondary">Pay now</button></a>
+                        <form action="{% url 'stripe_payment' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Checkout</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}
