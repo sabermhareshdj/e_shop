@@ -169,8 +169,8 @@ def payment_with_stripe(request):
     session = stripe.checkout.Session.create(
         line_items=[*li],
         mode='payment',
-        success_url='http://localhost:8000/payment/success',
-        cancel_url='http://localhost:8000/payment_fail/cancel',
+        success_url='https://e-shop-application-t24l.onrender.com/payment/success',
+        cancel_url='https://e-shop-application-t24l.onrender.com/payment_fail/cancel',
     )
 
     return redirect(session.url, code=303)
@@ -192,3 +192,4 @@ def remove_cart_obj(request, product):
         # إذا كان الكمية 1، نحذف العنصر من السلة
         cart_item.delete()
         return redirect('cart')
+
